@@ -44,7 +44,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 mark{background:#ffe9a8}
 .good{color:#1b7a3d}.bad{color:var(--red)}
 audio,video{width:100%;margin:8px 0}
-.pb{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.pb .btn{min-height:44px;min-width:92px}.pb .btn:disabled{opacity:.45;cursor:not-allowed}.pc{font-size:1.25rem;margin:6px 0;font-variant-numeric:tabular-nums}
+.pb{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.pb .btn{min-height:44px;min-width:92px}.pb .btn:disabled{opacity:.45;cursor:not-allowed}.pr{accent-color:var(--red);height:34px;margin:4px 0}.pc{font-size:1.25rem;margin:6px 0;font-variant-numeric:tabular-nums}
 @media(max-width:560px){.unit{gap:10px}.ring{width:48px;height:48px}.ring b{width:38px;height:38px}}
 </style></head><body>
 <header><div class="wrap"><div class="hd"><div class="logo" aria-hidden="true">EJ</div>
@@ -144,9 +144,9 @@ const fmt=s=>{s=Math.max(0,Math.floor(s||0));return String(Math.floor(s/60)).pad
 let APS=[];
 function stopAll(){APS.forEach(f=>{try{f()}catch(e){}});APS=[];try{speechSynthesis.cancel()}catch(e){}}
 function player(el,o){
- el.innerHTML='<div class=card><div class=sm>🎧 Audio duration: <b class=pd>'+(o.src?'loading…':'not available for the browser voice')+'</b></div>'+
+ el.innerHTML='<div class=card><div class=sm>🎧 Audio duration: <b class=pd>'+(o.src?'loading…':'calculating…')+'</b></div>'+
  '<div class=pb><button class="btn pri" data-a=play aria-label="Play">▶ Play</button> <button class=btn data-a=pause aria-label="Pause">⏸ Pause</button> <button class=btn data-a=stop aria-label="Stop">⏹ Stop</button>'+(o.tts?' <button class=btn data-a=slow aria-pressed=false>🐢 Slower</button>':'')+'</div>'+
- '<div class=pc aria-live=off><b class=pt>00:00 / --:--</b></div>'+(o.src?'<input type=range class=pr min=0 max=0 step=0.1 value=0 aria-label="Seek" style="width:100%">':'')+'<div class="sm pn"></div></div>';
+ '<div class=pc aria-live=off><b class=pt>00:00 / --:--</b></div>'+'<input type=range class=pr min=0 max=0 step=0.1 value=0 aria-label="Progress: click to jump to a point" disabled>'+'<div class="sm pn"></div></div>';
  const $q=s=>el.querySelector(s),pt=$q('.pt'),pdur=$q('.pd'),pn=$q('.pn'),pr=$q('.pr'),B=a=>$q('[data-a='+a+']');
  let st='stopped';const setS=x=>{st=x;B('play').disabled=x==='playing';B('pause').disabled=x!=='playing';B('stop').disabled=x==='stopped'&&!cur()};
  let cur=()=>0,dur=()=>NaN;
@@ -164,18 +164,42 @@ function player(el,o){
   a.onplay=()=>setS('playing');
   APS.push(()=>{a.pause();a.currentTime=0});
  }else{
-  let t0=0,acc=0,tm=null,rate=.9,tok=0;
-  const el0=()=>acc+(tm?(Date.now()-t0)/1000:0);cur=el0;
-  const tick=()=>{if(!tm)return;show()},stopT=()=>{if(tm){acc+=(Date.now()-t0)/1000;clearInterval(tm);tm=null}};
-  const run=()=>{t0=Date.now();clearInterval(tm);tm=setInterval(tick,250)};
-  const halt=()=>{tok++;try{speechSynthesis.cancel()}catch(e){}stopT();acc=0;setS('stopped');show()};
-  B('play').onclick=()=>{if(st==='paused'){try{speechSynthesis.resume()}catch(e){}run();setS('playing');return}
-   tok++;const my=tok;acc=0;play(o.tts(),rate,()=>{if(my===tok){stopT();acc=0;setS('stopped');show()}});run();setS('playing')};
-  B('pause').onclick=()=>{try{speechSynthesis.pause()}catch(e){}stopT();setS('paused');show()};
-  B('stop').onclick=halt;
-  B('slow').onclick=e=>{rate=rate===.9?.7:.9;e.currentTarget.setAttribute('aria-pressed',rate===.7);e.currentTarget.classList.toggle('pri',rate===.7);pn.textContent='Speed changes the next time you press Play.'};
-  pn.textContent='Browser voice: the elapsed time is measured live. The exact duration appears automatically when a teacher recording is added.';
-  APS.push(halt);
+  /* British female voice (browser speech). Real duration = measured from the real speech (silent measuring pass, cached). */
+  const D=o.tts(),lines=D.map(x=>x[1]),names=[...new Set(D.map(y=>y[0]))];
+  let rate=.9,durs=null,run=0,idx=0,acc=0,ls=0,pa=0,ps=0,dirty=false,mode='idle',live=[];
+  const hash=t=>{let h=0;for(let i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))|0;return h};
+  const voice=()=>{const vs=(window.speechSynthesis&&speechSynthesis.getVoices?speechSynthesis.getVoices():[]).filter(v=>/^en[-_]GB/i.test(v.lang));
+   return vs.find(v=>/female|serena|kate|martha|hazel|libby|sonia|susan|stephanie|fiona|amy|emma|mia|maisie/i.test(v.name)&&!/\bmale\b/i.test(v.name.replace(/female/ig,'')))||vs.find(v=>!/daniel|oliver|arthur|george|ryan|\bmale\b/i.test(v.name.replace(/female/ig,'')))||vs[0]};
+  const key=()=>'ttsd|'+rate+'|'+((voice()||{}).name||'')+'|'+hash(lines.join('|'));
+  const total=()=>durs?durs.reduce((a,x)=>a+x,0):NaN,off=i=>durs?durs.slice(0,i).reduce((a,x)=>a+x,0):NaN;
+  const lineT=()=>ls?Math.max(0,((mode==='paused'?ps:Date.now())-ls-pa)/1000):0;
+  cur=()=>acc+(mode==='playing'||mode==='paused'?lineT():0);dur=()=>total();
+  const setDurs=d=>{durs=d;try{localStorage.setItem(key(),JSON.stringify(d))}catch(e){}ready()};
+  const ready=()=>{if(durs){pdur.textContent=fmt(total());pr.disabled=false;pn.textContent='British female voice from your browser. The total time was measured from the real speech. Click the bar to jump to a passage (it restarts at the start of that sentence).'}show()};
+  const load=()=>{durs=null;pr.disabled=true;pdur.textContent='calculating…';try{const c=JSON.parse(localStorage.getItem(key())||'null');if(Array.isArray(c)&&c.length===lines.length&&c.every(x=>x>0.05))durs=c}catch(e){}
+   if(durs){ready()}else{pn.textContent='Measuring the real duration of the dialogue (silent)…';measure()}};
+  const sayLine=(i,vol,my,onLine,onAll)=>{if(my!==run)return;if(i>=lines.length){onAll();return}
+   const u=new SpeechSynthesisUtterance(lines[i]),v=voice(),k=names.indexOf(D[i][0]);u.lang='en-GB';u.rate=rate;u.volume=vol;u.pitch=k%2?.92:1.08;if(v)u.voice=v;
+   let fin=false,started=0;const end=()=>{if(fin||my!==run)return;fin=true;onLine(i,started?Date.now()-started:0);sayLine(i+1,vol,my,onLine,onAll)};
+   u.onstart=()=>{started=Date.now();if(vol>0){ls=started;pa=0}};u.onend=end;u.onerror=end;speechSynthesis.speak(u)};
+  const halt=()=>{run++;try{speechSynthesis.cancel();speechSynthesis.resume()}catch(e){}};
+  function measure(){halt();const my=run,m=[];try{sayLine(0,0,my,(i,ms)=>m.push(ms/1000),()=>{if(my!==run)return;if(m.length===lines.length&&m.every(x=>x>0.15))setDurs(m);else{pdur.textContent='not available on this device';pn.textContent='This browser voice does not report timings, so the exact duration cannot be shown. Play, Pause and Stop still work.'}})}catch(e){}}
+  const finish=()=>{mode='idle';idx=0;acc=0;ls=0;pa=0;setS('stopped');show()};
+  const go=(i,keepAcc)=>{halt();const my=run;mode='playing';idx=i;if(!keepAcc)acc=durs?off(i):0;ls=0;pa=0;dirty=false;if(i===0)live=[];setS('playing');
+   sayLine(i,1,my,(j,ms)=>{if(my!==run)return;const clean=!dirty&&ms>150;if(clean)live[j]=ms/1000;dirty=false;acc=durs?off(j+1):acc+(ms/1000);ls=0;pa=0;idx=j+1},()=>{if(my!==run)return;
+    if(!durs&&live.length===lines.length&&live.every(x=>x>0.15))setDurs(live.slice());finish()});run=my;show()};
+  B('play').onclick=()=>{if(mode==='paused'){try{speechSynthesis.resume()}catch(e){}pa+=Date.now()-ps;mode='playing';setS('playing');return}
+   if(!durs)pn.textContent='Measuring the duration while you listen…';go(idx,idx>0&&!durs)};
+  B('pause').onclick=()=>{if(mode!=='playing')return;try{speechSynthesis.pause()}catch(e){}ps=Date.now();dirty=true;mode='paused';setS('paused');show()};
+  B('stop').onclick=()=>{halt();finish()};
+  B('slow').onclick=e=>{rate=rate===.9?.7:.9;e.currentTarget.setAttribute('aria-pressed',rate===.7);e.currentTarget.classList.toggle('pri',rate===.7);halt();mode='idle';idx=0;acc=0;ls=0;setS('stopped');load()};
+  pr.oninput=()=>{pt.textContent=fmt(+pr.value)+' / '+fmt(total())};
+  pr.onchange=()=>{if(!durs)return;const t=+pr.value;let i=0;while(i<lines.length-1&&off(i+1)<=t)i++;const was=mode==='playing';
+   if(was){go(i,false)}else{halt();mode='idle';idx=i;acc=off(i);ls=0;setS('stopped');show()}};
+  if(window.speechSynthesis&&speechSynthesis.addEventListener)speechSynthesis.addEventListener('voiceschanged',()=>{if(mode==='idle'&&!durs)load()});
+  const tm=setInterval(()=>{if(!document.body.contains(el)){clearInterval(tm);return}if(mode==='playing')show()},200);
+  APS.push(()=>{halt();clearInterval(tm)});
+  load();
  }
  setS('stopped');show()}
 function gap(el,items,cb){el.innerHTML='';const dn=[],sc=document.createElement('p'),up=()=>sc.innerHTML='<b>Score: '+dn.filter(x=>x===1).length+'/'+items.length+'</b>';up();
@@ -210,7 +234,7 @@ function lesson(n,tab){
  if(tab==='prep'){h='<div class=card><h3>Learning objective</h3>'+D.o+'</div><h3>Vocabulary bank</h3><div class=card><label><input type=checkbox id=bl> Hide Arabic (tap a word to reveal it)</label><div id=wl>'+wordRows(L[n].v)+'</div></div>'+(L[n].m?'<h3>Matching</h3><div id=mt></div>':'')+'<h3>Arabic → English Recall</h3><div id=rc></div>';p.innerHTML=h;if(L[n].m)match($('#mt'),L[n].m);
   $('#bl').onchange=e=>$('#wl').classList.toggle('bl',e.target.checked);$('#wl').onclick=e=>{const a=e.target.closest('.ar');if(a)a.style.filter='none'};
   recall($('#rc'),mix(n),()=>done(n,'prep'))}
- else if(tab==='listen'&&L[n].d){p.innerHTML='<p>Listen to the dialogue as many times as you like, then answer. The transcript appears when you finish.</p><div id=tp></div><p class=sm>Voices are generated by your browser and vary by device. A teacher recording appears below when one is added.</p>'+(M.audio?'<h3>Teacher audio</h3><div id=ap></div>':'')+(M.video?'<video controls src=\"'+M.video+'\"></video>':'')+'<div id=qz></div><div class=card id=tr hidden><b>Transcript</b>'+L[n].d.map(x=>'<p style=\"margin:.3em 0\"><b>'+x[0]+':</b> '+x[1]+'</p>').join('')+'</div>'+(M.qa?'<h3>Teacher questions</h3><div id=qm></div>':'');player($('#tp'),{tts:()=>L[n].d});if(M.audio)player($('#ap'),{src:M.audio});quiz($('#qz'),D.lq,()=>{$('#tr').hidden=false;done(n,'listen')});if(M.qa)quiz($('#qm'),M.qa)}
+ else if(tab==='listen'&&L[n].d){p.innerHTML='<p>Listen to the dialogue as many times as you like, then answer. The transcript appears when you finish.</p><div id=tp></div>'+(M.audio?'<h3>Teacher audio</h3><div id=ap></div>':'')+(M.video?'<video controls src=\"'+M.video+'\"></video>':'')+'<div id=qz></div><div class=card id=tr hidden><b>Transcript</b>'+L[n].d.map(x=>'<p style=\"margin:.3em 0\"><b>'+x[0]+':</b> '+x[1]+'</p>').join('')+'</div>'+(M.qa?'<h3>Teacher questions</h3><div id=qm></div>':'');player($('#tp'),{tts:()=>L[n].d});if(M.audio)player($('#ap'),{src:M.audio});quiz($('#qz'),D.lq,()=>{$('#tr').hidden=false;done(n,'listen')});if(M.qa)quiz($('#qm'),M.qa)}
  else if(tab==='listen'){h='<p>Listen as many times as you like, then answer.</p><div id=tp></div><button class=btn onclick=\"this.nextElementSibling.hidden=!this.nextElementSibling.hidden\">Show / hide script</button><p class=card hidden>'+D.t+'</p>'+(M.audio?'<h3>Teacher audio</h3><div id=ap></div>':'')+(M.video?'<h3>Teacher video</h3><video controls src=\"'+M.video+'\"></video>':'')+'<div id=qz></div>'+(M.qa?'<h3>Audio / video questions</h3><div id=qm></div>':'');p.innerHTML=h;player($('#tp'),{tts:()=>[['',D.t]]});if(M.audio)player($('#ap'),{src:M.audio});
   quiz($('#qz'),[D.q[0]],()=>done(n,'listen'));if(M.qa)quiz($('#qm'),M.qa)}
  else if(tab==='read'){p.innerHTML=(L[n].info||'')+'<div class=card style="font-size:1.1rem;line-height:1.7">'+D.t+'</div><div id=qz></div>';quiz($('#qz'),D.rq||[D.q[1]],()=>done(n,'read'))}
