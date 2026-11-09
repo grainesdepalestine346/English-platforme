@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The English Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#13294b;--red:#b3282d;--bg:#f2f4f8;--ink:#1c2230;--line:#cfd6e3;--grn:#2f6b57}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 'Source Sans 3',system-ui,sans-serif}
+h1,h2,h3{font-family:'Libre Baskerville',Georgia,serif;color:var(--navy);margin:.3em 0;line-height:1.25}
+.ar{font-family:'Noto Naskh Arabic',serif;direction:rtl;unicode-bidi:isolate;color:var(--grn)}
+header{background:var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='90' fill='%23ffffff' fill-opacity='.07'%3E%3Cpath d='M0 90V60h30V40h20v50h20V30l6-14 6 14v60h30V55h40v35h24V20l5-20 5 20v70h30V50h30v40h30V65h40v25z'/%3E%3C/svg%3E") repeat-x right bottom;color:#fff;border-bottom:6px solid var(--red)}
+.wrap{max-width:900px;margin:auto;padding:16px}
+.hd{display:flex;gap:14px;align-items:center}
+.logo{flex:none;width:64px;height:64px;border-radius:50%;border:3px solid #fff;background:var(--red);display:grid;place-items:center;font:700 24px 'Libre Baskerville',serif}
+header h1{color:#fff;font-size:1.7rem;margin:0}header .ar{color:#cdd8ee}
+nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px}
+nav a{color:#fff;text-decoration:none;font-weight:600;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a:focus-visible{border-color:var(--red)}
+input[type=search],textarea,.ri{width:100%;font:inherit;padding:12px 16px;border:2.5px solid var(--navy);border-radius:14px;background:#fff}
+textarea{min-height:150px}
+.lv{display:flex;gap:8px;margin:14px 0}
+.lv button,.btn{font:600 1rem inherit;font-family:inherit;padding:8px 20px;border-radius:30px;border:2px solid var(--navy);background:#fff;color:var(--navy);cursor:pointer}
+.lv button.on,.btn.pri{background:var(--navy);color:#fff}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #e6a100;outline-offset:2px}
+.unit{display:flex;gap:16px;margin:26px 0;align-items:flex-start}
+.unit>div:last-child{flex:1;min-width:0}
+.ring{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--red) calc(var(--p)*1%),var(--line) 0)}
+.ring b{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 1.2rem 'Libre Baskerville',serif}
+.sm{font-size:.9rem;color:#4a5670}
+.pill{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:linear-gradient(#c23a3f,#a3252a);color:#fff;border:0;border-radius:40px;padding:12px 20px;margin:9px 0;box-shadow:0 4px 0 #6f1519;font:600 1rem 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.pill:active{transform:translateY(3px);box-shadow:0 1px 0 #6f1519}
+.soon{border:2px dashed var(--line);border-radius:18px;padding:14px 18px;color:#6a7690;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.tabs a{padding:6px 14px;border-radius:30px;border:2px solid var(--line);background:#fff;color:var(--navy);text-decoration:none;font-weight:600;font-size:.95rem}
+.tabs a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.grp{font-size:.85rem;color:#4a5670;margin:10px 0 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:12px 0}
+.w{padding:10px 0;border-bottom:1px solid var(--line);cursor:default}
+.w .ar{font-size:1.25rem}
+.bl .w .ar{filter:blur(7px);cursor:pointer}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:#fff;font:inherit;cursor:pointer}
+.opt.ok{border-color:#1b7a3d;background:#e6f5ec}.opt.no{border-color:var(--red);background:#fbe9ea}
+.fb{min-height:1.5em;font-size:.95rem}
+mark{background:#ffe9a8}
+.good{color:#1b7a3d}.bad{color:var(--red)}
+audio,video{width:100%;margin:8px 0}
+.pb{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.pb .btn{min-height:44px;min-width:92px}.pb .btn:disabled{opacity:.45;cursor:not-allowed}.pc{font-size:1.25rem;margin:6px 0;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.unit{gap:10px}.ring{width:48px;height:48px}.ring b{width:38px;height:38px}}
+</style></head><body>
+<header><div class="wrap"><div class="hd"><div class="logo" aria-hidden="true">EJ</div>
+<div><h1>The English Journey</h1><div>A2 Speaking Programme — Everyday English &amp; University Life in the UK <span class="ar">اختر درسًا</span></div></div></div>
+<nav><a href="#">Home</a><a href="#vocab">Vocabulary</a><a href="#rev">Revision</a><a href="#prog">My progress</a></nav></div></header>
+<main class="wrap" id="app"></main>
+<footer class="wrap sm">The English Journey · British English throughout · Progress is saved on this device only.</footer>
+<script>
+/* ===== TEACHER MEDIA: add files to /media and fill in below =====
+   MEDIA[lessonNumber]={audio:'media/l1.mp3', video:'media/l1.mp4', model:'media/l1-model.mp3',
+   qa:[[question,[options],correctIndex,explanation]]}   (model = your speaking model, used for self-assessment) */
+const MEDIA={};
+const TH=[["Introducing Yourself & Making Friends","التعريف بالنفس وتكوين الصداقات"],["Everyday Conversations & Socialising","المحادثات اليومية والتواصل الاجتماعي"],["Daily Life in Britain","الحياة اليومية في بريطانيا"],["Travel & Getting Around","السفر والتنقّل"],["Arriving in the UK","الوصول إلى المملكة المتحدة"],["Finding Accommodation & Settling In","البحث عن سكن والاستقرار"],["University Registration & Administration","التسجيل الجامعي والإجراءات الإدارية"]];
+const T=[["Hello, I'm…: Introducing Yourself","مرحبًا، أنا…: أُعرِّف بنفسي"],["Studies, Interests and Background","الدراسة والاهتمامات والخلفية"],["Personality and Meeting New People","الشخصية ولقاء أشخاص جدد"],["Starting and Keeping a Conversation","بدء المحادثة والاستمرار فيها"],["Invitations: Saying Yes and No","الدعوات: القبول والرفض"],["Likes, Dislikes and Polite Disagreement","الأذواق والاختلاف المهذّب"],["Daily Routines and Habits","الروتين اليومي والعادات"],["Food and Shopping","الطعام والتسوّق"],["Public Transport and Everyday Services","النقل العام والخدمات اليومية"],["At the Airport","في المطار"],["Directions and Public Transport","الاتجاهات والنقل العام"],["Booking a Room and Travel Problems","حجز غرفة ومشكلات السفر"],["Border Control and Basic Questions","مراقبة الحدود والأسئلة الأساسية"],["Asking for Information and Help","طلب المعلومات والمساعدة"],["From the Airport to Your City","من المطار إلى مدينتك"],["Looking for Student Accommodation","البحث عن سكن طلابي"],["Contacting Landlords: Rent and Facilities","التواصل مع المؤجّرين: الإيجار والمرافق"],["House Rules and Problems at Home","قواعد السكن ومشكلات المنزل"],["At the University Reception","في مكتب استقبال الجامعة"],["Registration and Required Documents","التسجيل والوثائق المطلوبة"],["Dealing with Administrative Staff","التعامل مع الموظفين الإداريين"]];
+const TN=n=>Math.ceil(n/3)+"."+((n-1)%3+1);
+const LVL=['A2','A2+','A2+ / B1','B1','B1+','B1+ / B2','B2'];
+const L={
+1:{sec:"30 seconds",sp:"Introduce yourself in 6 to 8 simple sentences: name, country, city, age and one thing you do. Then ask your partner two questions.",
+v:[["introduce yourself","verb phrase","يُعرِّف بنفسه","Let me introduce myself."],["Nice to meet you","expression","تشرّفتُ بمعرفتك","Nice to meet you, Amina."],["My name is","expression","اسمي","My name is Yusuf."],["first name","noun","الاسم الأول","My first name is Yusuf."],["surname","noun","اسم العائلة","My surname is Haddad."],["How do you spell it?","expression","كيف تتهجّى ذلك؟","How do you spell your surname?"],["I'm from","expression","أنا من","I'm from Morocco."],["nationality","noun","الجنسية","My nationality is Moroccan."],["hometown","noun","مسقط الرأس","My hometown is a small city."],["I live in","expression","أسكن في","I live in Montpellier."],["years old","expression","سنة (من العمر)","I'm nineteen years old."],["date of birth","noun","تاريخ الميلاد","My date of birth is 4 May 2005."],["phone number","noun","رقم الهاتف","What's your phone number?"],["email address","noun","عنوان البريد الإلكتروني","Can I have your email address?"],["What do you do?","expression","ماذا تعمل؟ / ماذا تدرس؟","What do you do? I'm a student."],["Could you repeat that?","expression","هل يمكنك أن تُعيد ذلك؟","Sorry, could you repeat that?"],["How about you?","expression","وأنت؟","I'm from Oran. How about you?"],["Pleased to meet you too","expression","وأنا أيضًا سعيد بلقائك","Pleased to meet you too."]],
+m:[["What's your name?","My name is Omar."],["Where are you from?","I'm from Morocco."],["How old are you?","I'm twenty years old."],["What do you do?","I'm a student."],["Nice to meet you.","Pleased to meet you too."],["How do you spell it?","O-M-A-R."]],
+d:[["Sara","Hi, I'm Sara. What's your name?"],["Omar","Hello, Sara. My name is Omar. Nice to meet you."],["Sara","Pleased to meet you too. Where are you from, Omar?"],["Omar","I'm from Oran, in Algeria. How about you?"],["Sara","I'm from Leeds, but I live in London now. How old are you?"],["Omar","I'm nineteen years old. Could you repeat your name, please?"],["Sara","Of course. It's Sara, S-A-R-A. What do you do?"],["Omar","I'm a student. I study English at university."]],
+rp:[["You meet a new student in the university café.","Introduce yourself and ask two questions.","Use: My name is… / Where are you from? / What do you do?","Hi, I'm Amina. Nice to meet you.\nPleased to meet you too. I'm Tom. Where are you from?\nI'm from Morocco. How about you?\nI'm from Bristol. What do you do?\nI'm a student."],["A teacher asks for your details.","Give your name, age, nationality and email address.","Spell your surname slowly.","My name is Amina Haddad. H-A-D-D-A-D.\nI'm nineteen and I'm Moroccan.\nMy email address is amina dot haddad at example dot com."]],
+l:{o:"Say who you are, where you are from and how old you are, and ask simple questions back.",
+t:"Hello! My name is Yusuf Haddad. I'm eighteen years old and I'm from Casablanca, in Morocco. Now I live in Manchester. I'm a first-year student at the university. My phone number is on my student card and my email address is simple. I'm happy to be here, but I'm a little nervous. Nice to meet you!",
+lq:[["Where is Omar from?",["Leeds","Oran","London"],1,"Omar says: I'm from Oran, in Algeria."],["How old is Omar?",["Eighteen","Nineteen","Twenty"],1,"He says: I'm nineteen years old."],["What does Omar ask Sara to repeat?",["Her age","Her name","Her city"],1,"'Could you repeat your name, please?'"]],
+rq:[["Where is Yusuf from?",["Manchester","Casablanca","Leeds"],1,"'I'm from Casablanca, in Morocco.'"],["How old is Yusuf?",["Eighteen","Nineteen","Twenty"],0,"'I'm eighteen years old.'"],["How does Yusuf feel?",["Nervous but happy","Angry","Bored"],0,"'I'm happy to be here, but I'm a little nervous.'"]],
+g:["The verb to be (am / is / are) and question words","Use am with I, is with he / she / it and are with you / we / they. Questions: Where are you from? What is your name? How old are you? Common mistake: ✗ I have nineteen years.",[["I ___ from Morocco.",["am","is","are"],0,"With I, use am."],["She ___ nineteen years old.",["am","is","are"],1,"With she, use is."],["___ are you from?",["What","Where","Who"],1,"Where asks about a place."],["___ is your name?",["Where","How","What"],2,"What is your name? asks for a name."],["We ___ students at the university.",["is","am","are"],2,"With we, use are."],["___ old are you?",["How","What","When"],0,"How old asks about age."]],
+[["My name ___ Omar.","is","A singular noun needs is."],["I ___ twenty years old.","am","With I, use am."],["Where ___ you from?","are","With you, use are."],["They ___ my new friends.","are","With they, use are."],["___ your email address correct?","is","Singular: Is your email address correct?"]]],
+w:["Write 4 to 6 simple sentences about yourself: name, age, country, city and one question for a friend.","Hello! My name is Amina and I'm nineteen years old. I'm from Casablanca, but I live in Montpellier. I'm a student. What's your name?",[30,60],['and','but','because']]}},
+2:{sec:"40 seconds",sp:"Talk about your studies and your free time in 6 to 8 sentences. Then ask your partner what they study and what they enjoy.",
+v:[["study","verb","يدرس","I study English."],["I'm studying","expression","أدرس حاليًا","I'm studying medicine."],["university","noun","جامعة","My university is in Glasgow."],["first-year student","noun","طالب في السنة الأولى","I'm a first-year student."],["subject","noun","مادة دراسية","My favourite subject is history."],["degree","noun","شهادة جامعية","I want a degree in business."],["hobby","noun","هواية","My hobby is photography."],["free time","noun","وقت الفراغ","What do you do in your free time?"],["I enjoy","expression","أستمتع بـ","I enjoy cooking."],["I'm interested in","expression","أهتمّ بـ","I'm interested in languages."],["I'm good at","expression","أجيد","I'm good at maths."],["favourite","adjective","مفضّل","Football is my favourite sport."],["play football","verb phrase","يلعب كرة القدم","I play football on Saturdays."],["go swimming","verb phrase","يذهب للسباحة","We go swimming on Sundays."],["cook","verb","يطبخ","I cook for my friends."],["languages","noun","لغات","I speak three languages."],["in my free time","expression","في وقت فراغي","In my free time, I read."],["I'd like to","expression","أودّ أن","I'd like to work in a hospital."]],
+m:[["What are you studying?","I'm studying business."],["What's your favourite subject?","Marketing."],["What do you do in your free time?","I enjoy cooking."],["Do you speak other languages?","Yes, I speak French."],["Are you good at maths?","Yes, I am."],["Do you play sport?","I play football."]],
+d:[["Jack","Hi, are you a new student?"],["Lina","Yes, I'm a first-year student. I'm studying business."],["Jack","Nice! Which subject do you like best?"],["Lina","I'm good at maths, but my favourite subject is marketing."],["Jack","What do you do in your free time?"],["Lina","I enjoy cooking and I play football on Saturdays."],["Jack","Really? I'm interested in football too. Do you speak other languages?"],["Lina","Yes, I speak Arabic, French and a little English."]],
+rp:[["A classmate asks about your course.","Say what you study and what you like about it.","Use: I'm studying… / My favourite subject is… / I'm good at…","What are you studying?\nI'm studying business. I'm a first-year student.\nWhat's your favourite subject?\nMarketing. I'm good at ideas, but not at maths!"],["You meet someone at a sports club.","Talk about your free time and ask about theirs.","Use: I enjoy… / In my free time… / What about you?","What do you do in your free time?\nI enjoy swimming and I cook with my sister. What about you?\nI play football on Saturdays.\nReally? I'm interested in football too."]],
+l:{o:"Talk about your studies, your interests and the languages you speak, using the present simple.",
+t:"My name is Lina and I'm eighteen. I'm from Algiers, but now I study business at a university in Glasgow. I'm a first-year student, so everything is new. My timetable is full: I have lectures on Monday, Tuesday and Thursday. I'm good at maths, but my favourite subject is marketing. In my free time, I enjoy cooking Algerian food for my friends and I play football on Saturdays. I'd like to work in a big company one day, but first I want to improve my English.",
+lq:[["What is Lina studying?",["Business","Medicine","Law"],0,"'I'm studying business.'"],["What does Lina do on Saturdays?",["She cooks","She plays football","She studies"],1,"'I play football on Saturdays.'"],["Which languages does Lina speak?",["Arabic, French and a little English","Only English","Spanish and Arabic"],0,"'Arabic, French and a little English.'"]],
+rq:[["Why is everything new for Lina?",["She is a first-year student","She is a teacher","She lives alone"],0,"'I'm a first-year student, so everything is new.'"],["What is her favourite subject?",["Maths","Marketing","Cooking"],1,"'My favourite subject is marketing.'"],["What does she want to improve?",["Her cooking","Her English","Her football"],1,"'First I want to improve my English.'"]],
+g:["Present simple and enjoy / like + -ing","Add -s with he / she / it (she studies). Use do / does for questions and don't / doesn't for negatives. After enjoy, like and love, use -ing (I enjoy cooking). Common mistake: ✗ She study business.",[["She ___ business at university.",["study","studies","studying"],1,"he / she / it + -s: study → studies."],["I ___ football on Saturdays.",["plays","play","am play"],1,"With I, use the base verb."],["___ you speak French?",["Do","Does","Are"],0,"With you, use Do."],["He doesn't ___ cooking.",["like","likes","liking"],0,"After doesn't, use the base verb."],["I enjoy ___ in the evening.",["read","reading","to reading"],1,"enjoy + -ing."],["___ Lina live in Glasgow?",["Do","Does","Is"],1,"With Lina (she), use Does."]],
+[["Lina ___ (cook) Algerian food at the weekend.","cooks","With she, add -s."],["I ___ like getting up early.","don't|do not","Negative with I: don't."],["___ you enjoy studying English?","do","Questions with you: Do…?"],["My brother ___ play football.","doesn't|does not","Negative with he: doesn't."],["They ___ (study) at the same university.","study","With they, use the base verb."]]],
+w:["Write 6 to 8 sentences about your studies and your free time. Use the present simple and enjoy / like + -ing.","I'm a first-year student and I study business. My favourite subject is marketing because it is interesting. In my free time, I enjoy cooking and I play football on Saturdays. I don't like getting up early. I speak Arabic, French and a little English.",[45,80],['and','but','because','so']]}},
+3:{sec:"45 seconds",sp:"Describe your personality and a new friend in 6 to 8 sentences. Then start a conversation with your partner: ask one question and react.",
+v:[["outgoing","adjective","اجتماعي، منفتح","She's outgoing and loves parties."],["shy","adjective","خجول","I'm shy with new people."],["friendly","adjective","ودود","The students here are friendly."],["funny","adjective","مرح","My cousin is very funny."],["kind","adjective","لطيف، طيّب","She's kind to everyone."],["hard-working","adjective","مجتهد","He's hard-working and serious."],["patient","adjective","صبور","A good teacher is patient."],["creative","adjective","مبدع","I'm creative, so I like drawing."],["calm","adjective","هادئ","He stays calm in exams."],["honest","adjective","صادق","I'm honest with my friends."],["a bit shy","expression","خجول نوعًا ما","I'm a bit shy at first."],["People say I'm","expression","يقول الناس إنني","People say I'm funny."],["Is this seat free?","expression","هل هذا المقعد فارغ؟","Excuse me, is this seat free?"],["Are you new here?","expression","هل أنت جديد هنا؟","Hi! Are you new here?"],["Can I join you?","expression","هل يمكنني الانضمام إليكم؟","Can I join you?"],["That sounds interesting","expression","يبدو ذلك مثيرًا للاهتمام","That sounds interesting!"],["It was great to meet you","expression","كان من الرائع لقاؤك","It was great to meet you."],["See you soon","expression","أراك قريبًا","Thanks for the coffee. See you soon!"]],
+m:[["Is this seat free?","Yes, sure."],["Are you new here?","Yes, I arrived last week."],["What are you like?","I'm quite outgoing."],["Can I join you?","Of course!"],["It was great to meet you.","You too. See you soon!"],["You're very funny!","Thanks, that's kind of you."]],
+d:[["Amir","Excuse me, can I join you? Is this seat free?"],["Emma","Of course! Are you new here?"],["Amir","Yes. People say I'm shy, but I'm quite friendly when I know someone."],["Emma","I'm outgoing, so I talk a lot!"],["Amir","That's fine. I'm a good listener and I'm very patient."],["Emma","Great. Let's have a coffee after class."],["Amir","That sounds interesting. It was great to meet you, Emma."],["Emma","You too, Amir. See you soon!"]],
+rp:[["You sit next to a new student in the canteen.","Start the conversation and describe yourself.","Use: Is this seat free? / Are you new here? / I'm quite…","Excuse me, is this seat free?\nYes, of course. Are you new here?\nYes, I am. I'm Karim. I'm a bit shy, but friendly.\nNice to meet you, Karim. I'm Jess. I'm outgoing!"],["Your friend asks about your new flatmate.","Describe your flatmate's personality with two adjectives.","Use: She's very… / He's quite… / because","What's your flatmate like?\nShe's very kind and quite funny.\nIs she shy?\nNo, she's outgoing, so we talk a lot."]],
+l:{o:"Describe your personality, start a conversation with a stranger and end it politely.",
+t:"Today is my first day at university and I'm very nervous. People say I'm shy, and it's true: I'm quiet when I meet new people. But I'm also hard-working, honest and patient, so I decide to try. In the canteen, I ask a girl, 'Is this seat free?' She smiles and says, 'Of course! Are you new here?' Her name is Emma. She's outgoing and very funny, so she does most of the talking. We have a coffee together and I'm less nervous. A simple question can start a friendship.",
+lq:[["How does Amir describe himself?",["Shy but friendly","Loud and funny","Angry and bored"],0,"'I'm shy, but I'm quite friendly.'"],["How does Emma describe herself?",["Shy","Outgoing","Calm"],1,"'I'm outgoing, so I talk a lot!'"],["What do they plan to do?",["Have a coffee after class","Visit the library","Go to a party"],0,"'Let's have a coffee after class.'"]],
+rq:[["What does the writer say about himself or herself?",["Shy but hard-working","Outgoing and loud","Angry and late"],0,"'I'm shy… But I'm also hard-working, honest and patient.'"],["What does the writer ask Emma?",["Is this seat free?","What's your name?","Where is the library?"],0,"'Is this seat free?'"],["What is the main idea of the text?",["A simple question can start a friendship","Coffee is expensive","University is boring"],0,"The last sentence gives the main idea."]],
+g:["Adjectives with very / quite / a bit and What are you like?","Put very, quite or a bit before an adjective to say how strong it is (very funny, quite shy, a bit nervous). Ask What are you like? to ask about personality. Use but and because to link ideas. Common mistake: ✗ I'm very of shy.",[["She's ___ funny; everyone laughs.",["very","much","a lot"],0,"Use very before an adjective."],["I'm ___ shy, but I try to talk.",["a bit","a few","a lot of"],0,"a bit + adjective."],["He ___ outgoing.",["are","is","am"],1,"With he, use is."],["What ___ you like?",["are","do","is"],0,"'What are you like?' asks about personality."],["I'm not ___ patient.",["very","a bit of","some"],0,"not very + adjective."],["My friends ___ kind.",["is","are","am"],2,"With friends (they), use are."]],
+[["My sister is ___ creative. (very / quite)","very|quite","very / quite + adjective."],["I'm ___ shy, but I'm friendly. (a bit / quite)","a bit|quite","Degree word + adjective."],["She ___ outgoing and funny.","is","With she, use is."],["What ___ your best friend like?","is","Singular subject: is."],["I'm hard-working ___ I'm not very organised.","but","Use but to contrast ideas."]]],
+w:["Write 6 to 8 sentences to describe your personality and a new friend. Use very, quite, a bit and because.","I'm quite shy, but I'm very friendly. I'm hard-working because I want to learn English. My new friend Emma is outgoing and funny. She's very kind, so I'm happy to meet her. We have coffee after class and we talk about our studies.",[50,90],['and','but','because','so']]}}
+};
+
+const $=s=>document.querySelector(s),app=$('#app');
+let P={};try{P=JSON.parse(localStorage.getItem('be')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('be',JSON.stringify(P))}catch(e){}};
+const lvl=()=>'A2',STG=['prep','listen','read','grammar','speak','write'];
+const done=(n,s)=>{P[n+lvl()+s]=1;save()};
+const pct=(n,l)=>Math.round(STG.filter(s=>P[n+l+s]).length/STG.length*100);
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9' -]/g,'').replace(/\s+/g,' ').trim();
+const mix=n=>{const sh=a=>[...a].sort(()=>Math.random()-.5),e=[];for(let k=1;k<n;k++)if(L[k])e.push(...L[k].v);return sh(L[n].v).slice(0,8).concat(sh(e).slice(0,4))};
+const all=()=>{let a=[];Object.keys(L).forEach(n=>L[n].v.forEach(w=>a.push(w)));return a};
+function say(t,r){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=r||.9;const v=speechSynthesis.getVoices().find(v=>v.lang==='en-GB');if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+
+function quiz(el,items,cb){
+ const st=[];el.innerHTML='';
+ const sc=document.createElement('p');sc.innerHTML='<b>Score: 0/'+items.length+'</b>';
+ items.forEach((it,i)=>{const d=document.createElement('div');d.className='card';d.innerHTML='<b>'+(i+1)+'. '+it[0]+'</b>';
+  const fb=document.createElement('div');fb.className='fb';fb.setAttribute('aria-live','polite');
+  it[1].forEach((o,j)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;
+   b.onclick=()=>{const ok=j===it[2];d.querySelectorAll('.opt').forEach(x=>x.classList.remove('ok','no'));b.classList.add(ok?'ok':'no');
+    fb.innerHTML=(ok?'<span class=good>✓ Correct.</span> ':'<span class=bad>✗ Not quite.</span> Correct answer: <b>'+it[1][it[2]]+'</b>. ')+it[3];
+    st[i]=ok?1:0;const n=st.reduce((a,x)=>a+x,0);sc.innerHTML='<b>Score: '+n+'/'+items.length+'</b>';
+    if(st.filter(x=>x!==undefined).length===items.length&&cb)cb()};d.append(b)});
+  d.append(fb);el.append(d)});
+ el.append(sc);const r=document.createElement('button');r.className='btn';r.textContent='Repeat this activity';r.onclick=()=>quiz(el,items,cb);el.append(r)}
+
+function recall(el,ws,cb){
+ ws=[...ws].sort(()=>Math.random()-.5).slice(0,12);let i=0,s=0;
+ const next=()=>{
+  if(i>=ws.length){el.innerHTML='<div class=card><b>Score: '+s+'/'+ws.length+'</b></div>';const b=document.createElement('button');b.className='btn pri';b.textContent='Practise again';b.onclick=()=>recall(el,ws,cb);el.append(b);if(cb)cb();return}
+  const w=ws[i];el.innerHTML='<div class=card><div>Say it in English:</div><div class=ar style="font-size:1.5rem">'+w[2]+'</div><input class=ri id=ri aria-label="English answer" autocomplete=off><p class=fb id=rf aria-live=polite></p></div>';
+  const inp=$('#ri'),f=$('#rf'),b=document.createElement('button');b.className='btn pri';b.textContent='Check';
+  let chk=false;b.onclick=()=>{if(chk){i++;next();return}chk=true;const ok=norm(inp.value)===norm(w[0]);if(ok)s++;
+   f.innerHTML=(ok?'<span class=good>✓ Correct.</span> ':'<span class=bad>✗ Not quite.</span> Answer: <b>'+w[0]+'</b>. ')+'<i>'+w[3]+'</i>';b.textContent=i+1<ws.length?'Next word':'See score'};
+  inp.onkeydown=e=>{if(e.key==='Enter')b.click()};el.firstChild.append(b);inp.focus()};
+ next()}
+
+function wordRows(ws){return ws.map(w=>'<div class=w><b>'+w[0]+'</b> <span class=sm>('+w[1]+')</span> <button class=btn style="padding:0 10px" onclick="say(\''+w[0].replace(/'/g,"\\'")+'\',.8)" aria-label="Listen to '+w[0]+'">🔊</button><div class=ar>'+w[2]+'</div>'+(w[4]?'<div class=sm><i>'+w[4]+'</i></div>':'')+'<div class=sm>'+w[3]+'</div></div>').join('')}
+
+function play(d,r,end){try{speechSynthesis.cancel();const vs=speechSynthesis.getVoices().filter(v=>v.lang==='en-GB'),names=[...new Set(d.map(y=>y[0]))];d.forEach(x=>{const u=new SpeechSynthesisUtterance(x[1]),k=names.indexOf(x[0]);u.lang='en-GB';u.rate=r||.9;u.pitch=k%2?1.3:.8;if(vs.length)u.voice=vs[k%vs.length];if(end&&x===d[d.length-1]){u.onend=end;u.onerror=end}speechSynthesis.speak(u)})}catch(e){}}
+/* ===== COMMON LISTENING PLAYER: Play / Pause / Stop + real duration + live counter =====
+   o.src = teacher audio file (real duration read from the file) | o.tts = ()=>dialogue array (browser voice) */
+const fmt=s=>{s=Math.max(0,Math.floor(s||0));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+let APS=[];
+function stopAll(){APS.forEach(f=>{try{f()}catch(e){}});APS=[];try{speechSynthesis.cancel()}catch(e){}}
+function player(el,o){
+ el.innerHTML='<div class=card><div class=sm>🎧 Audio duration: <b class=pd>'+(o.src?'loading…':'not available for the browser voice')+'</b></div>'+
+ '<div class=pb><button class="btn pri" data-a=play aria-label="Play">▶ Play</button> <button class=btn data-a=pause aria-label="Pause">⏸ Pause</button> <button class=btn data-a=stop aria-label="Stop">⏹ Stop</button>'+(o.tts?' <button class=btn data-a=slow aria-pressed=false>🐢 Slower</button>':'')+'</div>'+
+ '<div class=pc aria-live=off><b class=pt>00:00 / --:--</b></div>'+(o.src?'<input type=range class=pr min=0 max=0 step=0.1 value=0 aria-label="Seek" style="width:100%">':'')+'<div class="sm pn"></div></div>';
+ const $q=s=>el.querySelector(s),pt=$q('.pt'),pdur=$q('.pd'),pn=$q('.pn'),pr=$q('.pr'),B=a=>$q('[data-a='+a+']');
+ let st='stopped';const setS=x=>{st=x;B('play').disabled=x==='playing';B('pause').disabled=x!=='playing';B('stop').disabled=x==='stopped'&&!cur()};
+ let cur=()=>0,dur=()=>NaN;
+ const show=()=>{const d=dur();pt.textContent=fmt(cur())+' / '+(isFinite(d)&&d>0?fmt(d):'--:--');if(pr&&isFinite(d)){pr.max=d;pr.value=cur()}};
+ if(o.src){
+  const a=new Audio();a.preload='metadata';a.src=o.src;cur=()=>a.currentTime;dur=()=>a.duration;
+  const meta=()=>{if(isFinite(a.duration)){pdur.textContent=fmt(a.duration);show()}};
+  a.onloadedmetadata=meta;a.ondurationchange=meta;a.ontimeupdate=show;
+  a.onended=()=>{a.currentTime=0;setS('stopped');show()};
+  a.onerror=()=>{pdur.textContent='unavailable';pn.textContent='The audio file could not be loaded.'};
+  B('play').onclick=()=>{a.play().then(()=>setS('playing')).catch(()=>{pn.textContent='The audio file could not be played.'})};
+  B('pause').onclick=()=>{a.pause();setS('paused')};
+  B('stop').onclick=()=>{a.pause();a.currentTime=0;setS('stopped');show()};
+  pr.oninput=()=>{a.currentTime=+pr.value;show()};
+  a.onplay=()=>setS('playing');
+  APS.push(()=>{a.pause();a.currentTime=0});
+ }else{
+  let t0=0,acc=0,tm=null,rate=.9,tok=0;
+  const el0=()=>acc+(tm?(Date.now()-t0)/1000:0);cur=el0;
+  const tick=()=>{if(!tm)return;show()},stopT=()=>{if(tm){acc+=(Date.now()-t0)/1000;clearInterval(tm);tm=null}};
+  const run=()=>{t0=Date.now();clearInterval(tm);tm=setInterval(tick,250)};
+  const halt=()=>{tok++;try{speechSynthesis.cancel()}catch(e){}stopT();acc=0;setS('stopped');show()};
+  B('play').onclick=()=>{if(st==='paused'){try{speechSynthesis.resume()}catch(e){}run();setS('playing');return}
+   tok++;const my=tok;acc=0;play(o.tts(),rate,()=>{if(my===tok){stopT();acc=0;setS('stopped');show()}});run();setS('playing')};
+  B('pause').onclick=()=>{try{speechSynthesis.pause()}catch(e){}stopT();setS('paused');show()};
+  B('stop').onclick=halt;
+  B('slow').onclick=e=>{rate=rate===.9?.7:.9;e.currentTarget.setAttribute('aria-pressed',rate===.7);e.currentTarget.classList.toggle('pri',rate===.7);pn.textContent='Speed changes the next time you press Play.'};
+  pn.textContent='Browser voice: the elapsed time is measured live. The exact duration appears automatically when a teacher recording is added.';
+  APS.push(halt);
+ }
+ setS('stopped');show()}
+function gap(el,items,cb){el.innerHTML='';const dn=[],sc=document.createElement('p'),up=()=>sc.innerHTML='<b>Score: '+dn.filter(x=>x===1).length+'/'+items.length+'</b>';up();
+ items.forEach((it,i)=>{const d=document.createElement('div');d.className='card';d.innerHTML=it[0].replace('___','<input class=ri style="width:9em;display:inline-block;padding:4px 10px" aria-label="Missing word" autocomplete=off>')+' ';
+  const b=document.createElement('button'),f=document.createElement('div');b.className='btn';b.textContent='Check';f.className='fb';f.setAttribute('aria-live','polite');
+  b.onclick=()=>{const ok=it[1].split('|').map(norm).includes(norm(d.querySelector('input').value));dn[i]=ok?1:0;f.innerHTML=(ok?'<span class=good>✓ Correct.</span> ':'<span class=bad>✗ Not quite.</span> Answer: <b>'+it[1].split('|')[0]+'</b>. ')+it[2];up();if(dn.filter(x=>x!==undefined).length===items.length&&cb)cb()};
+  d.append(b,f);el.append(d)});el.append(sc)}
+function match(el,ps){const o=ps.map(x=>x[1]).sort(()=>Math.random()-.5);
+ el.innerHTML='<div class=card>'+ps.map(x=>'<div class=w><b>'+x[0]+'</b><br><select aria-label="Match">'+'<option value="">Choose…</option>'+o.map(y=>'<option>'+y+'</option>').join('')+'</select> <span class=fb></span></div>').join('')+'<button class="btn pri">Check</button> <b class=sc></b></div>';
+ el.querySelector('button').onclick=()=>{let n=0;el.querySelectorAll('select').forEach((x,i)=>{const ok=x.value===ps[i][1];n+=ok;x.nextElementSibling.innerHTML=ok?'<span class=good>✓</span>':'<span class=bad>✗ '+ps[i][1]+'</span>'});el.querySelector('.sc').textContent='Score: '+n+'/'+ps.length}}
+function home(){
+ app.innerHTML='<div class=card><b>Course plan <span class=ar>خطة المقرر</span></b><br>7 sessions × 3 lessons = 21 lessons (21 h). Part 1: Everyday English (Sessions 1–4) · Part 2: Preparing for University in the UK (Sessions 5–7). One continuous progression from A2 to B2.</div><input type=search id=s placeholder="🔎 Search lessons or words… / ابحث" aria-label="Search"><div id=sr></div><div id=path></div>';
+ const draw=q=>{q=q.toLowerCase();let h='';
+  TH.forEach((t,i)=>{const th=[1,2,3].map(k=>i*3+k),ls=th.filter(n=>!q||[T[n-1][0].toLowerCase(),T[n-1][1],t[0].toLowerCase(),t[1]].some(x=>x.includes(q)));if(!ls.length)return;
+   const bt=th.filter(n=>L[n]),avg=bt.length?Math.round(bt.reduce((a,n)=>a+pct(n,lvl()),0)/bt.length):0;
+   h+='<section class=unit><div class=ring style="--p:'+avg+'"><b>'+(i+1)+'</b></div><div><div class=sm>Session '+(i+1)+' · <span class=ar>الجلسة '+(i+1)+'</span> · '+LVL[i]+'</div><h2>'+t[0]+'</h2><div class=ar>'+t[1]+'</div>'+
+   ls.map(n=>L[n]?'<a class=pill href="#L/'+n+'/prep"><span>📘 Lesson '+TN(n)+': '+T[n-1][0]+'<br><small class=ar style="color:#fff">'+T[n-1][1]+'</small></span><span>'+pct(n,lvl())+'% ›</span></a>':'<div class=soon>Lesson '+TN(n)+': '+T[n-1][0]+' · Coming soon · <span class=ar>قريبًا</span></div>').join('')+'</div></section>'});
+  $('#path').innerHTML=h||'<p>No lesson found.</p>';
+  const m=q?all().filter(w=>(w[0]+w[2]+w[3]).toLowerCase().includes(q)):[];
+  $('#sr').innerHTML=m.length?'<div class=card><b>Words found ('+m.length+')</b>'+wordRows(m)+'</div>':''};
+ $('#s').oninput=e=>draw(e.target.value.trim());
+ draw('')}
+
+const TB=[['prep','Vocabulary','Before class'],['listen','Listening'],['read','Reading'],['grammar','Grammar'],['speak','Speaking','Speaking area'],['write','Writing','After class'],['rev','Revision']];
+function lesson(n,tab){
+ if(!L[n]){location.hash='';return}
+ const D=L[n].l,M=MEDIA[n]||{},SL=LVL[Math.ceil(n/3)-1];window.T0=D.t;
+ let tb='';TB.forEach(t=>{if(t[2])tb+='<div class=grp>'+t[2]+'</div><div class=tabs>';tb+='<a href="#L/'+n+'/'+t[0]+'" class="'+(t[0]===tab?'on':'')+'">'+t[1]+'</a>';});
+ tb=tb.replace(/<div class=grp>/g,(m,o)=>o?'</div>'+m:m)+'</div>';
+ app.innerHTML='<p><a href="#">‹ All lessons <span class=ar>الدروس</span></a></p><h2>Lesson '+n+': '+T[n-1][0]+'</h2><div class=ar>'+T[n-1][1]+'</div><p class=sm>Session '+Math.ceil(n/3)+' · Target level: <b>'+SL+'</b></p>'+tb+'<div id=pane></div>';
+ const p=$('#pane');let h='';
+ if(tab==='prep'){h='<div class=card><h3>Learning objective</h3>'+D.o+'</div><h3>Vocabulary bank</h3><div class=card><label><input type=checkbox id=bl> Hide Arabic (tap a word to reveal it)</label><div id=wl>'+wordRows(L[n].v)+'</div></div>'+(L[n].m?'<h3>Matching</h3><div id=mt></div>':'')+'<h3>Arabic → English Recall</h3><div id=rc></div>';p.innerHTML=h;if(L[n].m)match($('#mt'),L[n].m);
+  $('#bl').onchange=e=>$('#wl').classList.toggle('bl',e.target.checked);$('#wl').onclick=e=>{const a=e.target.closest('.ar');if(a)a.style.filter='none'};
+  recall($('#rc'),mix(n),()=>done(n,'prep'))}
+ else if(tab==='listen'&&L[n].d){p.innerHTML='<p>Listen to the dialogue as many times as you like, then answer. The transcript appears when you finish.</p><div id=tp></div><p class=sm>Voices are generated by your browser and vary by device. A teacher recording appears below when one is added.</p>'+(M.audio?'<h3>Teacher audio</h3><div id=ap></div>':'')+(M.video?'<video controls src=\"'+M.video+'\"></video>':'')+'<div id=qz></div><div class=card id=tr hidden><b>Transcript</b>'+L[n].d.map(x=>'<p style=\"margin:.3em 0\"><b>'+x[0]+':</b> '+x[1]+'</p>').join('')+'</div>'+(M.qa?'<h3>Teacher questions</h3><div id=qm></div>':'');player($('#tp'),{tts:()=>L[n].d});if(M.audio)player($('#ap'),{src:M.audio});quiz($('#qz'),D.lq,()=>{$('#tr').hidden=false;done(n,'listen')});if(M.qa)quiz($('#qm'),M.qa)}
+ else if(tab==='listen'){h='<p>Listen as many times as you like, then answer.</p><div id=tp></div><button class=btn onclick=\"this.nextElementSibling.hidden=!this.nextElementSibling.hidden\">Show / hide script</button><p class=card hidden>'+D.t+'</p>'+(M.audio?'<h3>Teacher audio</h3><div id=ap></div>':'')+(M.video?'<h3>Teacher video</h3><video controls src=\"'+M.video+'\"></video>':'')+'<div id=qz></div>'+(M.qa?'<h3>Audio / video questions</h3><div id=qm></div>':'');p.innerHTML=h;player($('#tp'),{tts:()=>[['',D.t]]});if(M.audio)player($('#ap'),{src:M.audio});
+  quiz($('#qz'),[D.q[0]],()=>done(n,'listen'));if(M.qa)quiz($('#qm'),M.qa)}
+ else if(tab==='read'){p.innerHTML=(L[n].info||'')+'<div class=card style="font-size:1.1rem;line-height:1.7">'+D.t+'</div><div id=qz></div>';quiz($('#qz'),D.rq||[D.q[1]],()=>done(n,'read'))}
+ else if(tab==='grammar'){p.innerHTML='<div class=card><h3>'+D.g[0]+'</h3><p>'+D.g[1]+'</p><p class=sm><b>Why here?</b> You need it to complete this lesson’s speaking task.</p></div><div id=qz></div>';quiz($('#qz'),D.g[2],()=>done(n,'grammar'));if(D.g[3]){p.insertAdjacentHTML('beforeend','<h3>Gap-fill</h3><div id=gf></div>');gap($('#gf'),D.g[3])}}
+ else if(tab==='speak'){const cr=['Fluency: I spoke without long pauses','Pronunciation: my vowels and stress were clear','Vocabulary: I used words from this lesson','Grammar: I used the target structure','Task: I answered every part of the prompt'];
+  p.innerHTML='<div class=card><h3>Your task</h3><p>'+L[n].sp+'</p><p class=sm>Target: speak for '+(L[n].sec||'45 seconds')+'.</p></div><ol><li>Read the task and plan your ideas.</li><li>Listen to the teacher’s model.</li><li><b>Record yourself on your own phone</b> (nothing is uploaded here).</li><li>Listen to your recording and compare it with the model.</li></ol>'+
+  (M.model?'<audio controls src="'+M.model+'"></audio>':'<div class=soon>Teacher’s model audio will appear here.</div>')+'<div class=card><h3>Self-assessment</h3>'+cr.map(c=>'<label style="display:block"><input type=checkbox> '+c+'</label>').join('')+'</div>';
+  if(L[n].rp)p.insertAdjacentHTML('afterbegin','<h3>Role-plays</h3>'+L[n].rp.map((r,i)=>'<div class=card><b>Situation '+(i+1)+':</b> '+r[0]+'<br><b>Goal:</b> '+r[1]+'<br><span class=sm>'+r[2]+'</span><details><summary>Model answer</summary><p style="white-space:pre-line">'+r[3]+'</p></details></div>').join(''));
+  p.querySelectorAll('input[type=checkbox]').forEach(i=>i.onchange=()=>{if(p.querySelectorAll('input:checked').length>=3)done(n,'speak')})}
+ else if(tab==='write'){const lim=D.w[2]||[40,60],LK=D.w[3]||['and','but','because'];p.innerHTML='<div class=card><h3>Task</h3><p>'+D.w[0]+'</p><p class=sm><b>Words:</b> '+lim[0]+'–'+lim[1]+' · <b>Audience:</b> your teacher and classmates · <b>Purpose:</b> to show you can use this lesson’s language.</p><p class=sm><b>Useful linking words:</b> '+LK.join(', ')+'</p></div><textarea id=tx aria-label="Your writing"></textarea><p class=sm id=wc>0 words</p><button class="btn pri" id=ck>Check my writing</button> <button class=btn id=md>Show model answer</button><div id=res></div><div class=card id=mo hidden><b>Model answer (shortened example)</b><p style="white-space:pre-line">'+D.w[1]+'</p></div><div class=card><h3>Assessment criteria and self-correction</h3><p class=sm>Task achievement · Organisation · Range of language · Accuracy · British spelling.</p>'+['I answered the task','I checked my verbs and tenses','I used linking words','I used British spelling','I reread it aloud'].map(c=>'<label style="display:block"><input type=checkbox> '+c+'</label>').join('')+'</div>';
+  const tx=$('#tx');tx.oninput=()=>$('#wc').textContent=(tx.value.trim()?tx.value.trim().split(/\s+/).length:0)+' words';
+  $('#md').onclick=()=>$('#mo').hidden=!$('#mo').hidden;
+  $('#ck').onclick=()=>{const t=tx.value,low=t.toLowerCase(),w=t.trim()?t.trim().split(/\s+/).length:0,r=[];
+   r.push([w>=lim[0]&&w<=lim[1],'Word count: '+w+' (target '+lim[0]+'–'+lim[1]+')']);
+   const lk=LK.filter(x=>low.includes(x)),need=2;r.push([lk.length>=need,'Linking words: '+(lk.join(', ')||'none')+' (aim for '+need+'+)']);
+   const am=low.match(/\b(color|favorite|center|organize|neighbor|program|realize)\w*/g)||[];r.push([!am.length,am.length?'American spelling: '+am.join(', ')+' → use British forms (colour, favourite, centre…)':'British spelling: no problems found']);
+   r.push([/^[A-Z]/.test(t.trim())&&/[.!?]$/.test(t.trim()),'Starts with a capital letter and ends with punctuation']);
+   const er=/\b(i am agree|peoples|he don't|she don't|more better)\b/i.test(t);r.push([!er,er?'Common error found (e.g. “I am agree”, “peoples”)':'None of the common errors on our list were found']);
+   $('#res').innerHTML='<div class=card><b>Automatic feedback</b><ul>'+r.map(x=>'<li class='+(x[0]?'good':'bad')+'>'+(x[0]?'✓ ':'✗ ')+x[1]+'</li>').join('')+'</ul><p class=sm>This tool checks form, not ideas. Compare with the model, then ask your teacher.</p></div>';
+   if(w>=lim[0])done(n,'write')}}
+ else{let ws=[];for(let k=1;k<=n;k++)if(L[k])ws=ws.concat(L[k].v);p.innerHTML='<p>Cumulative revision: words from this and earlier lessons return here.</p><div id=rc></div>';recall($('#rc'),ws)}
+ window.scrollTo(0,0)}
+
+function vocab(){app.innerHTML='<h2>Vocabulary bank <span class=ar>قاموس المفردات</span></h2><input type=search id=s placeholder="Search English or Arabic… / ابحث" aria-label="Search words"><label><input type=checkbox id=bl> Hide Arabic (tap a word to reveal it)</label><div class=card id=wl></div>';
+ const d=q=>{const m=all().filter(w=>(w[0]+w[2]+w[3]).toLowerCase().includes(q.toLowerCase()));$('#wl').innerHTML=m.length?wordRows(m):'No word found.'};
+ $('#s').oninput=e=>d(e.target.value.trim());$('#bl').onchange=e=>$('#wl').classList.toggle('bl',e.target.checked);$('#wl').onclick=e=>{const a=e.target.closest('.ar');if(a)a.style.filter='none'};d('')}
+function rev(){app.innerHTML='<h2>Revision <span class=ar>المراجعة</span></h2><p>Words from every lesson come back here. Type the English for each Arabic prompt.</p><div id=rc></div>';recall($('#rc'),all())}
+function prog(){let h='<h2>My progress <span class=ar>تقدّمي</span></h2><div class=card>';
+ Object.keys(L).forEach(n=>h+='<p><b>Lesson '+TN(+n)+'</b> – '+T[n-1][0]+'<br>'+pct(n,lvl())+'%'+'</p>');
+ app.innerHTML=h+'</div><button class=btn id=rs>Reset progress</button>';$('#rs').onclick=()=>{if(confirm('Delete all progress on this device?')){P={};save();prog()}}}
+function route(){stopAll();const h=location.hash.slice(1).split('/');
+ if(h[0]==='L')lesson(+h[1],h[2]||'prep');else if(h[0]==='vocab')vocab();else if(h[0]==='rev')rev();else if(h[0]==='prog')prog();else home()}
+addEventListener('hashchange',route);route();
+</script></body></html>
